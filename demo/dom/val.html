@@ -1,0 +1,105 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>QST.dom.val - QQSHOWTouch</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="fav.png"  />
+	<link rel="apple-touch-startup-image" href="startup.jpg">
+	<script src="../../build/QST.base.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://tommyfan.com/qst/examples/style.css" />
+	<script charset="utf-8">
+	$(function(){
+        var Q = QST, QD = Q.dom,
+            $ta = QST.dom.query('#ta'),
+            $sel = QST.dom.query('.sel'),
+            $it = QST.dom.query('#it');
+        $('.click1').bind('click',function(){
+            alert(QD.val($ta));
+        });
+        $('.click2').bind('click',function(){
+            alert(QD.val($sel));
+        });
+        $('.click3').bind('click',function(){
+            alert(QD.val($it));
+        });
+
+        $('.click4').bind('click',function(){
+            QD.val($ta,'被我修改了爽死了');
+        });
+        $('.click5').bind('click',function(){
+            QD.val($sel,1);
+        });
+        $('.click6').bind('click',function(){
+            QD.val($sel,'sel3');
+        });
+        $('.click7').bind('click',function(){
+            QD.val($it,'input被我修改了爽死了');
+        });
+	});
+	</script>
+	<style type="text/css">
+		.testDOM{margin:100px;padding:50px;background:#f3f3f3;border:10px dashed #ddd;}
+		.testDOM pre{margin-bottom:30px;padding:10px;background:#EEEEEE;border:1px solid #CCCCCC;}
+	</style>
+</head>
+<body>
+<h1>QST.dom</h1>
+<section class="testDOM">
+<pre>
+    <var>
+    var Q = QST, QD = Q.dom,
+        $ta = QST.dom.query('#ta'),
+        $sel = QST.dom.query('.sel'),
+        $it = QST.dom.query('#it');
+    </var>
+    $('.click1').bind('click',function(){
+        alert(QD.val($ta));
+    });
+    $('.click2').bind('click',function(){
+        alert(QD.val($sel));
+    });
+    $('.click3').bind('click',function(){
+        alert(QD.val($it));
+    });
+
+    $('.click4').bind('click',function(){
+        QD.val($ta,'被我修改了爽死了');
+    });
+    $('.click5').bind('click',function(){
+        QD.val($sel,1);
+    });
+    $('.click6').bind('click',function(){
+        QD.val($sel,'sel3');
+    });
+    $('.click7').bind('click',function(){
+        QD.val($it,'input被我修改了爽死了');
+    });
+</pre>
+
+<textarea name="" rows="8" cols="60" id="ta">
+    请测试我的val
+</textarea><br/>
+<select class="sel"name="">
+	<option value="sel1" selected="true">sel1</option>
+    <option value="sel2" >sel2</option>
+    <option value="sel3" >sel3</option>
+</select><br/>
+<input type="text" name="" id="it" value="ture"/><br/>
+<p>
+    <button class="click1">查询textarea</button>
+    <button class="click2">查询select</button>
+    <button class="click3">查询select</button>
+</p>
+<p>
+    <button class="click4">修改textarea</button>
+    <button class="click5">修改select(通过index修改)</button>
+    <button class="click6">修改select(通过val修改)</button>
+    <button class="click7">修改select</button>
+</p>
+</section>
+</body>
+</html>

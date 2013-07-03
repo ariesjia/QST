@@ -1,0 +1,109 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>QST.css - QQSHOWTouch</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="fav.png"  />
+	<link rel="apple-touch-startup-image" href="startup.jpg">
+	<script src="../../build/QST.base.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://tommyfan.com/qst/examples/style.css" />
+	<script charset="utf-8">
+	$(function(){
+        $('.click1').bind('click',function(){
+            $('.testoffset').width(200).height(200);
+        });
+        $('.click2').bind('click',function(){
+            alert($('.testoffset').width());
+            //alert(QC.css(td,'width'));
+        });
+        $('.click3').bind('click',function(){
+            $('.testoffset').width("20%").height(500);
+        });
+
+        var td = QST.dom.query('.testoffset'),
+            tf = QST.dom.query('.tof'),
+            Q = QST , QC = Q.css;
+
+
+        $('.click4').bind('click',function(){
+            QC.width(td,200);QC.height(td,200);
+        });
+        $('.click5').bind('click',function(){
+            alert(QC.width(td));
+            //alert(QC.css(td,'width'));
+        });
+        $('.click6').bind('click',function(){
+            QC.width(td,"20%");QC.height(td,500);
+        });
+
+
+
+	});
+	</script>
+	<style type="text/css">
+		.testDOM{margin:100px;padding:50px;background:#f3f3f3;border:10px dashed #ddd;}
+		.testDOM pre{margin-bottom:30px;padding:10px;background:#EEEEEE;border:1px solid #CCCCCC;}
+        .test{background-color:#ddd;width:100px;height:100px;padding:100px;position:absolute;}
+        .testoffset{position:absolute;width:20%;height:500px;left:60%;top:200px;
+            background-color:red;border:20px dashed black;padding:10px;margin:10px;
+        }
+        .tof{position:absolute;
+            left:100px;top:100px;width:100px;height:100px;
+            background-color:blue;
+        }
+	</style>
+</head>
+<body>
+<h1>QST.css</h1>
+<div class="testoffset">
+    <div class="tof">
+
+    </div>
+</div>
+<section class="testDOM">
+<pre>
+    $('.click1').bind('click',function(){
+        $('.testoffset').width(200).height(200);
+    });
+    $('.click2').bind('click',function(){
+        alert($('.testoffset').width());
+        //alert(QC.css(td,'width'));
+    });
+    $('.click3').bind('click',function(){
+        $('.testoffset').width("20%").height(500);
+    });
+    <var>
+        var td = QST.dom.query('.testoffset'),
+            tf = QST.dom.query('.tof'),
+            Q = QST , QC = Q.css;
+    </var>
+    $('.click4').bind('click',function(){
+        QC.width(td,200);QC.height(td,200);
+    });
+    $('.click5').bind('click',function(){
+        alert(QC.width(td));
+        //alert(QC.css(td,'width'));
+    });
+    $('.click6').bind('click',function(){
+        QC.width(td,"20%");QC.height(td,500);
+    });
+</pre>
+<p>
+    node方法：
+    <button class="click1">wid(200)hei(200)-red</button>
+    <button class="click2">width-red</button>
+    <button class="click3">wid(20%)hei(500)-red</button>
+</p>
+<p>
+    dom方法：
+    <button class="click4">wid(200)hei(200)-red</button>
+    <button class="click5">height-red</button>
+    <button class="click6">wid(20%)hei(500)-red</button>
+</p>
+</section>
+</body>
+</html>

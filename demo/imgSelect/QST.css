@@ -1,0 +1,239 @@
+.scroll_page_mod {
+	height:200px;		/* Of course you need to specify the object height */
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined (absolute | relative), */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	width:100%;
+	background:#aaa;
+	overflow:hidden;
+}
+
+.scroll_page_mod .scroller {
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	float:left;
+	width:100%;
+	padding:0;
+/*	-webkit-box-shadow:0 0 8px #555;	/* Don't use box shadows, they slow down drastically CSS animations */
+}
+
+.scroll_page_mod .scroller ul {
+	list-style:none;
+	padding:0;
+	margin:0;
+	width:100%;
+	text-align:left;
+}
+
+.scroll_page_mod .scroller li {
+	padding:0 10px;
+	height:40px;
+	line-height:40px;
+	border-bottom:1px solid #ccc;
+	border-top:1px solid #fff;
+	background-color:#fafafa;
+	font-size:14px;
+}
+
+.scroll_page_mod .scroller li > a {
+	display:block;
+}
+.scroll_page_mod .scroller .update,
+.scroll_page_mod .scroller .update_down{
+	position:relative;
+	top:0;
+	height:30px;
+	text-align:center;
+	line-height: 30px;
+	width:100%;
+	-webkit-box-shadow:-3px 0 5px inset;
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transition-timing-function: cubic-bezier(0, 0, 0.25, 1);
+	-webkit-transition-duration: 350ms;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+}
+.scroll_page_mod .scroller .content{
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transition-timing-function: cubic-bezier(0, 0, 0.25, 1);
+	-webkit-transition-duration: 350ms;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+}
+.scroll_page_mod .scroller .update_down{
+	margin:0;;
+}
+.scroll_page_mod .scroller .update .word,
+.scroll_page_mod .scroller .update_down .word{
+	-webkit-transition-property:-webkit-transform,background-color,color;
+	-webkit-transition-timing-function:cubic-bezier(0, 0, 0.25, 1);
+	-webkit-transition-duration:350ms;
+	display:block;
+}
+/*加载提示条文字默认状态*/
+.scroll_page_mod .scroller .default_loading{
+	background-color:rgba(0,0,0,.2);
+	color:#000;
+}
+/*加载提示条文字准备状态*/
+.scroll_page_mod .scroller .before_loading{
+	background-color:rgba(0,0,0,.8);
+	color:#fff;
+}
+/*加载提示条文字进行中状态*/
+.scroll_page_mod .scroller .now_loading{
+	background-color:rgba(0,0,0,.2);
+	color:#fff;
+}
+/*===== viewmod =====*/
+.view_mod{
+	width:100%;
+	background-color:red;
+	position:absolute;
+	left:0px;
+	top:0px;
+	-webkit-transform: translate3d(0px, -10000px, 0px);
+}
+.view_mod_slider{
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	display:-webkit-box;
+	-webkit-box-orient:horizontal;
+	position:relative;
+	height:100%;
+}
+.view_mod_wrapper{
+	height:300px;
+	overflow:hidden;
+	width:300px;
+	position:relative;
+}
+/**/
+.cover_flow_mod{
+	margin-bottom:30px;
+}
+.cover_flow_mod_warp {
+	width:100%;
+	height:100%;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	overflow:hidden;
+
+	background:#aaa;
+	-webkit-border-radius:10px;
+	background:#e3e3e3;
+/*	background:#aaa url(wrapper-bg.png);*/
+	box-sizing: border-box;
+}
+
+.cover_flow_mod_scroller {
+/*	-webkit-touch-callout:none;*/
+/*	-webkit-tap-highlight-color:rgba(0,0,0,0);*/
+	height:100%;
+	padding:0;
+	width:2100px;/*自动被设置*/
+	box-sizing:border-box;
+
+/*	-webkit-box-shadow:0 0 8px #555;	/* Don't use shadows in production, they slow down drastically CSS animations */
+}
+
+.cover_flow_mod_nav {
+	width:100%;
+	overflow:hidden;
+	position:relative;
+	z-index:2;
+	height:30px;
+}
+
+.cover_flow_mod_nav_prev,
+.cover_flow_mod_nav_next {
+	float:left;
+	font-weight:bold;
+	font-size:14px;
+	padding:5px 0;
+	width:80px;
+}
+
+.cover_flow_mod_nav_next {
+	float:right;
+	text-align:right;
+}
+
+.cover_flow_mod_nav_indicator,
+.cover_flow_mod_nav_indicator > li {
+	display:inline-block;
+	list-style:none;
+	padding:0;
+}
+
+.cover_flow_mod_nav_indicator {
+	width:104px;
+	padding:12px 0 0 30px;
+	background-color:#fff;
+}
+
+.cover_flow_mod_nav_indicator > li {
+	text-indent:-9999em;
+	width:8px; height:8px;
+	-webkit-border-radius:4px;
+	background:#ddd;
+	overflow:hidden;
+	position:relative;
+}
+
+.cover_flow_mod_nav_indicator > li.active {
+	background:#888;
+}
+
+.cover_flow_mod_nav_indicator > li:last-child {
+	margin:0;
+}
+/*加载样式*/
+.img_loading_status{
+	/*background:url('loading.gif') center center no-repeat;*/
+}
+/*===== 加载类样式 =====*/
+.loading_mod{
+	position:absolute;
+	height:100%;
+	width:100%;
+	top:0px;
+	left:0px;
+	z-index:9999;
+}
+.loading_mod .loading_mod_note{
+	opacity:0;
+	width:130px;
+	height:50px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-25px 0 0 -65px;
+	line-height:50px;
+	text-align:center;
+	background-color:rgba(0,0,0,0.8);
+	color:#fff;
+	border-radius:8px;
+	box-shadow:0 2px 5px #000;
+	-webkit-transition-property: all;
+	-webkit-transition-timing-function: cubic-bezier(0, 0, 0.5, 1);
+	-webkit-transition-duration: 800ms;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	font-size:24px;
+}
+
+.loading_mod_off_1 .loading_mod_note{
+	opacity:0;
+}
+
+.loading_mod_on .loading_mod_note{
+	opacity:1;
+}
+
+.loading_mod_off_2 .loading_mod_note{
+	-webkit-transition-duration: 400ms;
+	opacity:0;
+}
+/*navMod*/
+.navigator_mod{position:relative; }
+.navigator_mod *{position:relative;z-index:2;}
+.navigator_mod >div:last-child{position:absolute; top:0px;left:0px;-webkit-transition:all 0.3s cubic-bezier(0,0,0.5,1);-webkit-transform:translate3d(0,0,0);background-color:rgba(0,0,0,0.6);width:0px;height:0px;z-index:1;}
+/**/
+link{visibility:hidden;}

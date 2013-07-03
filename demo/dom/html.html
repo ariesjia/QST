@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>QST.dom.text - QQSHOWTouch</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="fav.png"  />
+	<link rel="apple-touch-startup-image" href="startup.jpg">
+	<script src="../../build/QST.base.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://tommyfan.com/qst/examples/style.css" />
+	<script charset="utf-8">
+	$(function(){
+        var Q = QST, QD = Q.dom , otext = QD.html(QD.query('.test'));
+        $('.click1').bind('click',function(){
+            var html = QD.html(QD.query('.test')) == otext ? '<p>看什么？别动</p>' : otext;
+            QD.html(QD.query('.test'),html)
+        });
+        $('.click2').bind('click',function(){
+            alert(QD.html(QD.query('.test')));
+        });
+	});
+	</script>
+	<style type="text/css">
+		.testDOM{margin:100px;padding:50px;background:#f3f3f3;border:10px dashed #ddd;}
+		.testDOM pre{margin-bottom:30px;padding:10px;background:#EEEEEE;border:1px solid #CCCCCC;}
+	</style>
+</head>
+<body>
+<h1>QST.dom</h1>
+<section class="testDOM">
+<pre>
+    <var>
+    var Q = QST, QD = Q.dom , otext = QD.text(QD.query('a'));
+    </var>
+    $('.click1').bind('click',function(){
+        var text = QD.text(QD.query('a')) == otext ? '我是替补（无辜~）' : otext;
+        QD.text(QD.query('a'),text)
+    });
+    $('.click2').bind('click',function(){
+        alert(QD.text(QD.query('a')));
+    });
+</pre>
+<div class="test">
+    <p>look i'm crazy</p>
+    <a href="" title="" >去看看</a>
+</div>
+<p>
+dom方法：
+    <button class="click1">修改html</button>
+    <button class="click2">获取html</button>
+</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>QST.css - QQSHOWTouch</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="fav.png"  />
+	<link rel="apple-touch-startup-image" href="startup.jpg">
+	<script src="../../build/QST.base.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://tommyfan.com/qst/examples/style.css" />
+	<script charset="utf-8">
+	$(function(){
+        $('.click1').bind('click',function(){
+            alert($('.testoffset').offset().left);
+        });
+        $('.click2').bind('click',function(){
+            alert($('.testoffset').offset().top);
+        });
+        $('.click3').bind('click',function(){
+            alert($('.tof').offset().left);
+        });
+        $('.click4').bind('click',function(){
+            alert($('.tof').offset().top);
+        });
+        var td = QST.dom.query('.testoffset'),
+            tf = QST.dom.query('.tof'),
+            Q = QST , QC = Q.css;
+
+        $('.click5').bind('click',function(){
+            alert(QC.offset(td).left);
+        });
+        $('.click6').bind('click',function(){
+            alert(QC.offset(td).top);
+        });
+        $('.click7').bind('click',function(){
+            alert(QC.offset(tf).left);
+        });
+        $('.click8').bind('click',function(){
+            alert(QC.offset(tf).top);
+        });
+
+	});
+	</script>
+	<style type="text/css">
+		.testDOM{margin:100px;padding:50px;background:#f3f3f3;border:10px dashed #ddd;}
+		.testDOM pre{margin-bottom:30px;padding:10px;background:#EEEEEE;border:1px solid #CCCCCC;}
+        .test{background-color:#ddd;}
+        .testoffset{position:absolute;width:20%;height:500px;left:60%;top:200px;
+            background-color:red;
+        }
+        .tof{position:absolute;
+            left:100px;top:100px;width:100px;height:100px;
+            background-color:blue;
+        }
+	</style>
+</head>
+<body>
+<h1>QST.css</h1>
+<div class="testoffset">
+    <div class="tof">
+
+    </div>
+</div>
+<section class="testDOM">
+<pre>
+    $('.click1').bind('click',function(){
+        alert($('.testoffset').offset().left);
+    });
+    $('.click2').bind('click',function(){
+        alert($('.testoffset').offset().top);
+    });
+    $('.click3').bind('click',function(){
+        alert($('.tof').offset().left);
+    });
+    $('.click4').bind('click',function(){
+        alert($('.tof').offset().top);
+    });
+    <var>
+        var td = QST.dom.query('.testoffset'),
+            tf = QST.dom.query('.tof'),
+            Q = QST , QC = Q.css;
+    </var>
+    $('.click5').bind('click',function(){
+        alert(QC.offset(td).left);
+    });
+    $('.click6').bind('click',function(){
+        alert(QC.offset(td).top);
+    });
+    $('.click7').bind('click',function(){
+        alert(QC.offset(tf).left);
+    });
+    $('.click8').bind('click',function(){
+        alert(QC.offset(tf).top);
+    });
+</pre>
+<p>
+    node方法：
+    <button class="click1">offset(left)-red</button>
+    <button class="click2">offset(top)-red</button>
+    <button class="click3">offset(left)-blue</button>
+    <button class="click4">offset(top)-blue</button>
+</p>
+<p>
+    dom方法：
+    <button class="click5">offset(left)-red</button>
+    <button class="click6">offset(top)-red</button>
+    <button class="click7">offset(left)-blue</button>
+    <button class="click8">offset(top)-blue</button>
+</p>
+</section>
+</body>
+</html>

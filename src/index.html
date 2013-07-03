@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>QST [base] 基库测试</title>
+<style type="text/css">
+    .box{color:red;font-size:18px;}
+    .test_anim{position:absolute;width:100px;height:100px;background-color:red;
+       left:150px;top:20px;
+    }
+    .sec{background-color:blue;top:140px;}
+</style>
+<script type="text/javascript" src="../build/QST.base.js"></script>
+<!-- <script type="text/javascript" src="jquery-1.4.js"></script> -->
+<script type="text/javascript">
+     //dump(QST.now())
+    //QST.ready(function(){
+        //var $km = $('.km');
+        //dump($(".km",document.getElementById("box")));
+        //var $box = $("#box")
+        //dump($(".children").children().length);
+
+        //------测试  addClass removeClass
+        //dump($(".km",$(".box")).removeClass('km'))
+
+
+        //------测试  append  prepend  appendTO  prependTo before after insert
+        //dump($("#box").insertBefore($(".camyou")));
+
+        //------测试 remove
+        //dump($("#box").remove())
+
+        //------测试 creat , $(string)
+        //dump(QST.dom.creat("<div>alert</div>").appendTo($("#box")))
+
+        //------测试 clone
+        //dump($("#box").clone().appendTo($("body")))
+
+        //------测试 wrapAll wrapinner
+        //dump($("p").wrap("<div class='wraptest'>")[0]);
+
+
+
+        //$(".box").find('p').html('我正在修改他');
+
+        //function dum(Q){
+        //    Q.each(function(i,o){
+        //        dump(o);
+        //    })
+        //}
+
+        //function Bird(name) { this.name = name; }
+        //Bird.prototype.fly = function() { alert(this.name + ' is flying //now!'); };
+
+        //function Chicken(name) {
+        //    this.name = name;
+        //}
+        //QST.inherits(Chicken, Bird);
+
+        //new Chicken('Frank').fly();
+
+
+
+        QST.add({
+            hello:function(){
+                dump('hello ,use add  ')
+            },
+            girl:function(){
+                dump('girl')
+            }
+        },true)
+        QST.add(
+            'dom',{'hel':function(){
+                dump('helhelhelhelhel')
+            }},{'node':true})
+
+
+
+        //dump(QST.dom.init())
+
+        //QST.hello();
+        //$('.test').hello();
+        //$('.test').hel();
+        //$('.test').girl();
+
+        QST.ready(function(){
+            var Q = QST, D = Q.dom , C = Q.css , Ca = Q.cache , E = Q.event;
+            var box = document.getElementById('box');
+            var camyou = document.getElementById('camyou');
+            var boxlist = QST.dom.query('.box');
+           //
+
+
+          var  m = QST.node('.box');
+          //dump(QST.css.css(box,"color",'black'));
+            //dump(m.addClass('testname').removeClass('name').css({'color':'red'}));
+
+
+            //dump($(".box").html());
+
+            //------测试  append  prepend  appendTO  prependTo before after insert
+            //$(".box").before('<div>innuy</div>');
+            //QST.dom.appendTo(camyou,"<div>");
+
+            //------测试 clone
+            //dump($('<div>mihyikhyu</div>').clone().appendTo($("body")))
+
+
+             //dump(D.remove(box));
+             //dump(D.before(box,D.clone('<div>clone test</div>')))
+
+            //dump($(".box p").text('我的TEXT来的'))
+
+            //dump($(".box").contents())
+
+            //dump(Ca.data(box,'non','fily'));
+            //dump(Ca.removeData(box,'non'));
+            //dump(Ca.data(box,'non'));
+
+
+
+
+            //E.bind(D.query('.click'),'click',function(){
+            //    alert('s');
+            //});
+
+            //dump(typeof boxlist);
+
+            var test_anim = QST.dom.query('.test_anim');
+            var ani = function(){
+                var ttleft = QST.css.offset(test_anim).left+100,
+                    tttop = QST.css.offset(test_anim).top+100;
+                QST.effect.animate(test_anim,{
+                    width : 200,
+                    height : 200,
+                    left : ttleft,
+                    top : tttop,
+                    'background-color':'#bfd630'
+                },5000,function(){dump('fin')})
+            }
+            $('<button class="click">点我爽死了</button>').prependTo($('body'));
+            $('.click').touch(ani,function(){
+                dump('move');
+            },function(){
+                dump('end');
+            });
+
+
+            $('.click_unbind').click(function(){
+                QST.effect.stop(test_anim,true)
+                //$('.click').unbind('touchstart',ani);
+            })
+            var ua  = Q.ua;
+
+
+            Q.cache.data(m[0],'data',{uin:'463435681',pas:'123456'})
+            dump( Q.cache.data(m[0]));
+            dump( Q.cache.data(m[0]))
+
+
+            //Q.cache.storage({'name':'ares','age':'21'});
+            //dump(Q.cache.storage('name'));
+
+            QST.add('test',function(){
+                dump('test');
+            },{
+                'node':true
+            })
+
+
+        });
+
+
+    //})
+</script>
+</head>
+<body>
+
+    <div class="test_anim">
+    </div>
+    <div class="test_anim sec">
+    </div>
+
+    <section class="testdom">
+        这里是一个test
+    </section>
+    <p><button class="click_unbind">点我让楼上的废掉</button></p>
+    <p>this.pushStack( "", "find", selector )</p>
+	<div class="box" id="box">
+		我算是老爹
+		<p id="boxp1" class="km test s">这是我儿子</p>
+	</div>
+	<div class="box children">
+		2老爹
+		<p id="boxp2" class="km">2老爹的大儿子</p>
+        <div class="box">
+            <div class="km">test</div>
+        </div>
+        <p id="boxp2" class="km">2老爹的小儿子</p>
+	</div>
+	<input class="inp1" name="Text1" type="text" value="nihao"  />
+	<select class="se1" id="mm" style="width:100px;">
+		<option id="fuck1" value="text">texttexttexttexttexttexttext</option>
+		<option value="2">2</option>
+		<option value="min">3</option>
+		<option value="4">4</option>
+	</select>
+    <div id="camyou" class="camyou">这里是一个测试的哟</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>QST.node - QQSHOWTouch</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="fav.png"  />
+	<link rel="apple-touch-startup-image" href="startup.jpg">
+	<script src="../../build/QST.base.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://tommyfan.com/qst/examples/style.css" />
+	<script charset="utf-8">
+	$(function(){
+        var $test = $('.test');
+        $('.click1').bind('click',function(){
+            alert($test.length);
+        });
+        $('.click2').bind('click',function(){
+            $('#ta').val('');
+            $test.each(function(i,o){
+                $('#ta').val($('#ta').val()+o+"\n")
+            })
+        });
+	});
+	</script>
+	<style type="text/css">
+		.testDOM{margin:100px;padding:50px;background:#f3f3f3;border:10px dashed #ddd;}
+		.testDOM pre{margin-bottom:30px;padding:10px;background:#EEEEEE;border:1px solid #CCCCCC;}
+	</style>
+</head>
+<body>
+<h1>QST.node</h1>
+<section class="testDOM">
+<p>QST.node 将会产生QST.node对象，在QST.node对象中封装进了QST.css QST.dom QST.event QST.cache方法，可以链式操作</p>
+<pre>
+var $test = $('.test');
+$('.click1').bind('click',function(){
+    alert($test.length);
+});
+$('.click2').bind('click',function(){
+    $('#ta').val('');
+    $test.each(function(i,o){
+        $('#ta').val($('#ta').val()+o+"\n")
+    })
+});
+</pre>
+<div class="test">我是&lt;div class="test"&gt;&lt;/div&gt;</div>
+<div class="test">我是&lt;div class="test"&gt;&lt;/div&gt;</div>
+<div class="test">我是&lt;div class="test"&gt;&lt;/div&gt;</div>
+<textarea name="" rows="8" cols="60" id="ta"></textarea>
+<p>
+    <button class="click1">数量</button>
+    <button class="click2">详细</button>
+</p>
+</section>
+</body>
+</html>

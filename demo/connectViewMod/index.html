@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>QST [关联视图组件] connect_view_mod DEMO演示</title>
+
+<script type="text/javascript" src="../../build/QST.base.js"></script>
+<script type="text/javascript" src="QST.viewModsNet.js"></script>
+<script type="text/javascript">
+    var Q = QST;
+    QST.ready(function(){
+        var VMN = $('.ares').viewModsNet();
+        VMN.bind('.custom','1_5');
+    })
+</script>
+<!-- QST.css中含有connect_view_mod组件必要的样式 -->
+<link id="link" href="QST.css" rel="stylesheet" type="text/css" media="all" />
+<style type="text/css" media="all">
+body{font-size:12px;line-height: 18px;}
+.a{background-color:#c5f0fe; }
+.a h2{margin:-15px 7px 5px;}
+.a img{margin:100px 0 0 80px;}
+.b{background-color:#8ce1fd; }
+.c{background-color:#57d6ff; }
+.d{ background-color:#2fccff; } .e{ background-color:#00bdfb; }
+.goto,.custom{cursor:pointer;-webkit-border-radius:3px;color:#000;text-decoration:none;background-color:#f2fafd;padding:4px;display:block;margin:0 5px 5px;border-bottom:1px solid #999;border-top:1px solid #fff;}
+.goto:after,.custom:after{content:'';position:absolute; display:block;height:0px;width:6px;border:6px solid #ccc;right:-2px;margin-top:-15px;border-right-color:transparent;border-top-color:transparent;border-bottom-color:transparent;}
+.view_mod_wrapper{width:300px;height:500px;}/*--要设置宽高--*/
+.view_mod{padding:20px 0px;}
+.back{cursor:pointer;text-decoration:none;margin:0;color:#fff;position:absolute; width:30px;text-align:center;padding:2px 5px;background-color:#000;left:0px;top:0px;-webkit-border-radius:3px}
+h2{margin:5px 7px;font-size:12px;}
+section{margin:0 8px;}
+ol{margin:0;padding:0 0 0 25px;}
+li{margin:2px 0;padding:0 0 0 0px;}
+code{color:#fffc00;background-color:rgba(255,255,255,0.2);padding:3px;-webkit-border-radius:3px;display:block;text-shadow:1px 1px 1px #333}
+h1{margin-top:25px;}
+</style>
+
+</head>
+<body>
+<h1>关联视图组件</h1>
+<p>简单定义关系，建立多层页面。</p>
+    <div class="ares">
+		<div class="a" rel="1">
+			<h2>目录:</h2>
+			<a class="goto" rel="1_1">描述</a>
+			<a href="" class="goto" rel="1_2">用法</a>
+			<a class="goto" rel="1_3">注意</a>
+			<a class="goto" rel="1_4">基库</a>
+			<a class="custom">自定义带AJAX回调方法链接测试</a>
+			<center><img src="viewMod_2.png" alt=""/></center>
+		</div>
+		<div class="b" rel="1_1">
+			<h2>描述:</h2>
+			<a class="back">返回</a>
+			<section>
+				<p>组件 <code>viewModsNet</code> 用于定义一个关系链，可用于多子页应用。</p>
+			</section>
+		</div>
+		<div class="b" rel="1_2">
+			<h2>用法:</h2>
+			<a class="back" rel="1_2">返回</a>
+			<p><a class="goto" rel="1_2_1">固定html结构</a></p>
+
+			<section>
+				<p>实例化<code>new QST.viewModsNet('.view_mod');</code></p>
+				<p>其中含两个方法：</p>
+				<div>
+					<code>back()</code> 返回父页面。<br/>
+					<a class="goto" rel="1_2_3">goto()</a>
+				</div>
+			</section>
+			<p><a href="ajax.php" class="goto" rel="1_2_2">ajax请求内容</a></p>
+		</div>
+		<div class="b" rel="1_2_1">
+			<a class="back">返回</a>
+			<h2>要使用viewModsNet组件需定义以下结构</h2>
+			<section>
+				<code>
+					 &lt;div class="view_mod a" rel="1"&gt; 内容... &lt;a class="back"&gt;返回&lt;/a&gt; &lt;a class="goto" rel="1_1"&gt;去往：1_1&lt;/a&gt; &lt;/div&gt; &lt;div class="view_mod b" rel="1_1"&gt; 内容... &lt;/div&gt; &lt;div class="view_mod b" rel="1_2"&gt; 内容... &lt;/div&gt; &lt;div class="view_mod c" rel="1_1_1"&gt; 内容... &lt;/div&gt;
+				</code>
+			</section>
+		</div>
+		<div class="b" rel="1_2_2">
+			<a class="back">返回</a>
+			<h2>ajax.php返回了以下内容：</h2>
+			<div class="view_mod_content">待更新...</div>
+		</div>
+		<div class="b" rel="1_2_3">
+			<h2>注意:</h2>
+			<a class="back">返回</a>
+			<section>
+			<code>goto(rel,url,afterAjaxUpdate,beforeAjaxUpdate)</code> rel为关系字符，如"1_2_3",定义在view_mod类div中。定义url时，可更新内容区为url返回内容。事件afterAjaxUpdate(el,e),含有AJAX请求时最终返回函数(假如此函数定义为空但有AJAX请求则自动更新指定的内容区)，el为目标视图，e为xhr返回对象;含有AJAX请求时，请求前执行函数beforeAjaxUpdate(el)el为目标视图
+			</section>
+		</div>
+		<div class="b" rel="1_3">
+			<a class="back">返回</a>
+			<h2>注意:</h2>
+			<section>
+				<code>
+					something will be write here.
+				</code><br/>
+				<img src="viewMod_1.jpg" alt=""/>
+			</section>
+		</div>
+		<div class="b" rel="1_4">
+			<a class="back">返回</a>
+			<h2>基库:</h2>
+			<section>
+				<code>
+					<b>FRAME：</b><br/>
+					HTML5,CSS3
+				</code>
+			</section>
+			<section>
+				<code>
+					<b>KEY CODE：</b><br/>
+					-webkit-transform: translate3d(0px, 0px, 0px);
+				</code>
+			</section>
+		</div>
+		<div class="b" rel="1_5">
+			<a class="back">返回</a>
+			<h2>自定义链接测试</h2>
+			<section>
+				<div class="view_mod_content">待更新...</div>
+			</section>
+		</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>QST.css - QQSHOWTouch</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="fav.png"  />
+	<link rel="apple-touch-startup-image" href="startup.jpg">
+	<script src="../../build/QST.base.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://tommyfan.com/qst/examples/style.css" />
+	<script charset="utf-8">
+	$(function(){
+        $('.click1').bind('click',function(){
+            $('.testDOM').css('background-color','#ddd');
+        });
+        $('.click2').bind('click',function(){
+            alert($('.testDOM').css('background-color'));
+        });
+
+        var td = QST.dom.query('.testDOM'),Q = QST , QC = Q.css;
+
+        $('.click3').bind('click',function(){
+            QC.css(td,'background-color','#f3f3f3');
+        });
+        $('.click4').bind('click',function(){
+            alert(QC.css(td,'background-color'));
+        });
+
+
+	});
+	</script>
+	<style type="text/css">
+		.testDOM{margin:100px;padding:50px;background:#f3f3f3;border:10px dashed #ddd;}
+		.testDOM pre{margin-bottom:30px;padding:10px;background:#EEEEEE;border:1px solid #CCCCCC;}
+        .test{background-color:#ddd;}
+	</style>
+</head>
+<body>
+<h1>QST.css</h1>
+<section class="testDOM">
+<pre>
+    $('.click1').bind('click',function(){
+        $('.testDOM').css('background-color','#ddd');
+    });
+    $('.click2').bind('click',function(){
+        alert($('.testDOM').css('background-color'));
+    });
+
+    <var>var td = QST.dom.query('.testDOM'),Q = QST , QC = Q.css;</var>
+
+    $('.click3').bind('click',function(){
+        QC.css(td,'background-color','#f3f3f3');
+    });
+    $('.click4').bind('click',function(){
+        alert(QC.css(td,'background-color'));
+    });
+</pre>
+<p>
+    node方法：
+    <button class="click1">css(set)</button>
+    <button class="click2">css(get)</button>
+</p>
+<p>
+    dom方法：
+    <button class="click3">css(set)</button>
+    <button class="click4">css(get)</button>
+</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>QST - QQSHOWTouch</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="fav.png"  />
+	<link rel="apple-touch-startup-image" href="startup.jpg">
+	<script src="../build/QST.base.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://tommyfan.com/qst/examples/style.css" />
+	<script charset="utf-8">
+	$(function(){
+		QST.node(".testDOM")[0].onclick = function(){
+			this.innerHTML += '<br />cool';
+		};
+	});
+	</script>
+	<style type="text/css">
+		.testDOM{margin:100px;padding:50px;background:#f3f3f3;border:10px dashed #ddd;}
+		.testDOM pre{margin-bottom:30px;padding:10px;background:#EEEEEE;border:1px solid #CCCCCC;}
+	</style>
+</head>
+<body>
+<h1>QST</h1>
+<section class="testDOM">
+<pre>
+// $ = QST.ready
+QST.ready(function(){
+        // $ = QST.node
+	QST.node(".testDOM")[0].onclick = function(){
+		this.innerHTML += '&lt;br /&gt;cool';
+	};
+});
+</pre>
+点击我，可以看到选择器已经生效
+</section>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>QST [base] 基库测试</title>
+<style type="text/css">
+    .test{border:10px solid #fff;padding:10px;font-size:18px;}
+    .box{color:#666;border:10px solid #ccc;}
+</style>
+<script type="text/javascript" src="../build/QST.base.js"></script>
+<!-- <script type="text/javascript" src="jquery-1.4.js"></script> -->
+<script type="text/javascript">
+    var Q = QST;
+    Q.ready(function(){
+        //node方法：
+        //$('.click').touch(function(){
+        //    var ishide = $('.test').css('opacity') == 1 ? 0 : 1;
+        //    $('.test').addClass('box');
+        //    $('.test').animate({opacity:ishide},1000);
+        //})
+        //dom 方法：
+        var QD = Q.dom , QE = Q.event ,QC = Q.css,
+            $test = QD.query('.test');
+        QE.touch(QD.query('.click'),function(){
+            var ishide = QC.css(QD.query('.test'),'opacity') == 1 ? 0 : 1;
+            QC.addClass($test,'box');
+            Q.effect.animate($test,{
+                opacity : ishide
+            },0,function(){dump('fin')});
+        })
+    })
+</script>
+</head>
+<body>
+    <div class="test">
+        我是一个神秘的人~忽隐忽现~
+    </div>
+    <p><button class="click">点我让楼上的废掉</button></p>
+</body>
+</html>

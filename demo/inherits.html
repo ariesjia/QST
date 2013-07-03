@@ -1,0 +1,78 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>QST.inherits - QQSHOWTouch</title>
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="fav.png"  />
+	<link rel="apple-touch-startup-image" href="startup.jpg">
+	<script src="../build/QST.base.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://tommyfan.com/qst/examples/style.css" />
+	<script charset="utf-8">
+    QST.ready(function(){
+
+        function human(name) {
+            this.name = name;
+            this.eat = function(){
+                $('.mongg').html($('.mongg').html()+"<br/>"+this.name+"开始吃饭");
+            };
+        }
+
+        function chinese(name) {
+            this.name = name+"(中国人)";
+        }
+        QST.inherits(chinese, human);
+
+        var fishow = new human('fishow')
+        var ares = new chinese('ares');
+
+        $('.click1').bind('click',function(){
+            fishow.eat();
+        })
+        $('.click2').bind('click',function(){
+            ares.eat();
+        })
+    })
+	</script>
+	<style type="text/css">
+		.testDOM{margin:100px;padding:50px;background:#f3f3f3;border:10px dashed #ddd;}
+		.testDOM pre{margin-bottom:30px;padding:10px;background:#EEEEEE;border:1px solid #CCCCCC;}
+	</style>
+</head>
+<body>
+<h1>QST.inherits</h1>
+<section class="testDOM">
+<pre>
+    function human(name) {
+        this.name = name;
+    }
+    human.prototype.eat = function(){
+        $('.con').html($('.con').html()+"&lt;br/&gt;"+this.name+"开始吃饭");
+    };
+
+    function chinese(name) {
+        this.name = name+"(中国人)";
+    }
+    QST.inherits(chinese,human);
+
+    var fishow = new human('fishow')
+    var ares = new chinese('ares');
+
+    $('.click1').bind('click',function(){
+        fishow.eat();
+    })
+    $('.click2').bind('click',function(){
+        ares.eat();
+    })
+</pre>
+    <div class="mongg">
+
+    </div>
+    <button class="click1">fishow(human).eat</button>
+    <button class="click2">ares(chinese).eat</button>
+</section>
+</body>
+</html>
